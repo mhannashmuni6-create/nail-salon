@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(({ command }) => {
   return {
-    base: process.env.VITE_BASE_PATH ?? (command === 'build' ? '/nailmusesalon/' : '/'),
+    base: process.env.VITE_BASE_PATH ?? (command === 'build' ? '/nail-salon/' : '/'),
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
