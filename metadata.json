@@ -1,0 +1,6 @@
+{
+  "name": "Nail Muse Studio",
+  "description": "Boutique nail and beauty salon in Melbourne, Victoria, Australia specialising in BIAB builder gel, luxury manicures, and bespoke nail art. Your Nails, Your Muse.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

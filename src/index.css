@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --color-blush: #F5E6E8;
+    --color-ivory: #FAF7F2;
+    --color-beige: #E8DCD0;
+    --color-rose: #C9959B;
+    --color-brown: #59443F;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-ivory);
+    color: var(--color-brown);
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom aesthetic utility classes */
+.font-display {
+  font-family: var(--font-serif);
+}
+
+.bg-blush {
+  background-color: #F5E6E8;
+}
+
+.bg-ivory {
+  background-color: #FAF7F2;
+}
+
+.bg-beige {
+  background-color: #E8DCD0;
+}
+
+.bg-rose-accent {
+  background-color: #C9959B;
+}
+
+.bg-chocolate {
+  background-color: #59443F;
+}
+
+.text-chocolate {
+  color: #59443F;
+}
+
+.text-rose-accent {
+  color: #C9959B;
+}
+
+.border-beige-subtle {
+  border-color: rgba(232, 220, 208, 0.7);
+}
+
+.border-rose-subtle {
+  border-color: rgba(201, 149, 155, 0.4);
+}
