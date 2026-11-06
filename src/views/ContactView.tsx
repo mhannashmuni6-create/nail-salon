@@ -9,6 +9,7 @@ import {
   CheckCircle,
   ExternalLink,
   Navigation,
+  Info,
 } from 'lucide-react';
 import { SALON_INFO } from '../data/salonData';
 import { trackEvent } from '../utils/analytics';
@@ -164,15 +165,22 @@ export const ContactView: React.FC = () => {
               </h3>
             </div>
 
+            {/* University Project Demonstration Notice */}
+            <div className="p-3.5 bg-[#F5E6E8]/80 rounded-xl border border-[#E8DCD0] text-xs text-[#59443F]/90 flex items-start gap-2.5">
+              <Info className="w-4 h-4 text-[#C9959B] shrink-0 mt-0.5" />
+              <span>
+                <strong>University Project Demonstration:</strong> This contact form is an interactive design demonstration for educational purposes. Nail Muse Studio is a conceptual salon; submissions are not sent or stored, and no email response will be received.
+              </span>
+            </div>
+
             {isSubmitted ? (
               <div className="bg-[#FAF7F2] rounded-2xl p-8 text-center space-y-4 border border-[#E8DCD0] animate-in fade-in">
                 <div className="w-12 h-12 rounded-full bg-[#F5E6E8] flex items-center justify-center mx-auto text-[#C9959B]">
                   <CheckCircle className="w-6 h-6" />
                 </div>
-                <h4 className="font-serif text-2xl text-[#59443F]">Message Sent Successfully</h4>
-                <p className="text-sm text-[#59443F]/80 max-w-md mx-auto">
-                  Thank you, <span className="font-semibold">{fullName}</span>. We have received your
-                  inquiry and our salon team will respond to <span className="font-mono">{email}</span> within 24 hours.
+                <h4 className="font-serif text-2xl text-[#59443F]">Demo Form Completed Successfully</h4>
+                <p className="text-sm text-[#59443F]/85 max-w-md mx-auto leading-relaxed">
+                  Thank you, <span className="font-semibold">{fullName}</span>. Please note that this is an <strong>interactive demonstration only</strong> for a university assessment. <strong>No message has been sent</strong>, no data has been stored, and <strong>no response email will be received</strong>.
                 </p>
                 <div className="pt-2">
                   <button
@@ -182,7 +190,7 @@ export const ContactView: React.FC = () => {
                     }}
                     className="text-xs uppercase tracking-wider font-semibold text-[#59443F] hover:text-[#C9959B]"
                   >
-                    Send another inquiry
+                    Reset Demo Form
                   </button>
                 </div>
               </div>

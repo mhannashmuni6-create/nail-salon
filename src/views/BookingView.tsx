@@ -237,12 +237,11 @@ END:VCALENDAR`;
           preferences.
         </p>
 
-        {/* Demonstration mode disclaimer banner as required */}
-        <div className="p-3 bg-[#F5E6E8]/70 rounded-xl border border-[#E8DCD0] text-xs text-[#59443F]/90 max-w-lg mx-auto flex items-center justify-center gap-2">
-          <Sparkles className="w-4 h-4 text-[#C9959B] shrink-0" />
+        {/* University Project Demonstration Notice */}
+        <div className="p-3.5 bg-[#F5E6E8]/85 rounded-xl border border-[#E8DCD0] text-xs text-[#59443F]/90 max-w-xl mx-auto flex items-start sm:items-center justify-center gap-2.5 shadow-xs">
+          <Sparkles className="w-4 h-4 text-[#C9959B] shrink-0 mt-0.5 sm:mt-0" />
           <span>
-            <strong>Interactive Demonstration Portal:</strong> Experience our booking flow before
-            backend confirmation.
+            <strong>University Project Demonstration:</strong> This booking system is an interactive prototype created for academic assessment. Nail Muse Studio is a conceptual salon; no real appointments are booked, and no payment is processed.
           </span>
         </div>
       </div>
@@ -811,9 +810,7 @@ END:VCALENDAR`;
 
             {/* Disclaimer reminder */}
             <div className="p-4 bg-[#FAF7F2] rounded-xl text-xs text-[#59443F]/80 leading-relaxed border border-[#E8DCD0]">
-              <strong>Demonstration Notice:</strong> Submitting this request sends your staged
-              appointment details for review. No payment or credit card is processed on this demo
-              site.
+              <strong>University Project Demonstration:</strong> Submitting this request demonstrates the prototype appointment staging flow. No real booking is created, no email is sent, and no payment is processed.
             </div>
           </div>
 
@@ -845,18 +842,13 @@ END:VCALENDAR`;
 
           <div className="space-y-2">
             <span className="text-xs uppercase tracking-[0.25em] text-[#C9959B] font-bold">
-              Booking Request Received
+              Demonstration Complete
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#59443F] font-normal">
-              Your Appointment is Staged!
+              Demo Booking Staged!
             </h2>
             <p className="text-sm text-[#59443F]/85 max-w-md mx-auto leading-relaxed">
-              Thank you, <span className="font-semibold">{confirmedBooking.fullName}</span>. Your
-              booking request has been prepared under reference{' '}
-              <strong className="font-mono text-[#59443F] font-bold">
-                {confirmedBooking.referenceNumber}
-              </strong>
-              .
+              Thank you, <span className="font-semibold">{confirmedBooking.fullName}</span>. Please note that this is a <strong>demonstration only</strong> for a university assessment. <strong>No real appointment has been created</strong>, and <strong>no confirmation email will be sent</strong>.
             </p>
           </div>
 
@@ -885,11 +877,10 @@ END:VCALENDAR`;
           </div>
 
           {/* Note regarding demonstration status */}
-          <div className="text-xs text-[#59443F]/75 bg-[#F5E6E8]/50 p-4 rounded-xl border border-[#E8DCD0] text-left space-y-1">
-            <p className="font-medium text-[#59443F]">Demonstration System Information:</p>
+          <div className="text-xs text-[#59443F]/80 bg-[#F5E6E8]/60 p-4 rounded-xl border border-[#E8DCD0] text-left space-y-1.5">
+            <p className="font-semibold text-[#59443F]">University Project Demonstration Notice:</p>
             <p>
-              In production, client requests connect directly with the salon management system,
-              dispatching automated confirmation emails and calendar synchronization.
+              This booking summary demonstrates client-side workflow interaction only. No actual booking has been made at any physical salon, no customer records or personal information are stored or transmitted, and no email notifications will be sent.
             </p>
           </div>
 
