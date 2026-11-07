@@ -72,7 +72,7 @@ export const ContactView: React.FC = () => {
                   <strong className="block text-[#59443F]">Salon Location</strong>
                   <span>{SALON_INFO.location}</span>
                   <p className="text-xs text-[#59443F]/60 mt-0.5">
-                    Central Melbourne (Exact studio suite address provided upon booking confirmation)
+                    Doncaster, Melbourne (Proposed studio location details provided for this academic project)
                   </p>
                 </div>
               </div>
@@ -289,18 +289,18 @@ export const ContactView: React.FC = () => {
         <div className="p-6 sm:p-8 border-b border-[#E8DCD0] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <span className="text-[10px] uppercase tracking-widest text-[#C9959B] font-bold">
-              Melbourne Location Map
+              Doncaster Location Map
             </span>
             <h3 className="font-serif text-2xl text-[#59443F] font-medium">
               Finding Nail Muse Studio
             </h3>
             <p className="text-xs sm:text-sm text-[#59443F]/75">
-              Conveniently located near central Melbourne tram routes and nearby parking precincts.
+              Conveniently located in Doncaster with nearby bus transit connections and parking precincts.
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs font-medium text-[#59443F]/80 bg-[#FAF7F2] px-4 py-2 rounded-full border border-[#E8DCD0] shrink-0 self-start sm:self-auto">
             <Navigation className="w-3.5 h-3.5 text-[#C9959B]" />
-            <span>Melbourne, Victoria 3000</span>
+            <span>Doncaster, Victoria</span>
           </div>
         </div>
 
@@ -325,17 +325,17 @@ export const ContactView: React.FC = () => {
             </div>
             <div>
               <h4 className="font-serif text-lg font-medium text-[#59443F]">
-                Nail Muse Studio Melbourne
+                Nail Muse Studio Doncaster
               </h4>
               <p className="text-xs text-[#59443F]/80 mt-1">
-                Melbourne, Victoria, Australia
+                Doncaster, Melbourne, Victoria, Australia
               </p>
               <p className="text-[11px] text-[#C9959B] mt-0.5 font-medium">
                 Google Maps Embed Placeholder
               </p>
             </div>
             <a
-              href="https://maps.google.com/?q=Melbourne+Victoria+Australia"
+              href="https://maps.google.com/?q=Doncaster+Victoria+Australia"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#59443F] hover:text-[#C9959B] underline pt-1"

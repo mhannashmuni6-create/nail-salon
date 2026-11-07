@@ -147,7 +147,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <div className="space-y-2.5 text-sm text-[#59443F]/80">
                 <p className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 text-[#C9959B] shrink-0 mt-0.5" />
-                  <span>Melbourne, Victoria, 3000, Australia</span>
+                  <span>Doncaster, Melbourne, Victoria, Australia</span>
                 </p>
                 <p className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-[#C9959B] shrink-0" />
@@ -168,7 +168,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   <ShieldCheck className="w-3.5 h-3.5 text-[#C9959B]" />
                   Hygiene Standard
                 </div>
-                Hospital-grade autoclave sterilization for all metal instruments with single-use buffers & files.
+                Standardized tool sanitization and hygienic workstation practices for every appointment.
               </div>
             </div>
           </div>

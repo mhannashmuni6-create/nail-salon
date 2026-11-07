@@ -98,11 +98,12 @@ export const AboutView: React.FC<AboutViewProps> = ({
               <ShieldCheck className="w-5 h-5 text-[#C9959B]" />
             </div>
             <h3 className="font-serif text-xl font-medium text-[#59443F]">
-              Uncompromising Cleanliness
+              Dedicated Hygiene &amp; Cleanliness
             </h3>
             <p className="text-xs text-[#59443F]/80 leading-relaxed">
-              All metal instruments undergo hospital-grade dry-heat/autoclave sterilization in sealed
-              pouches. Nail files and buffers are strictly single-use for each guest.
+              Dedicated tool sanitization and clean workstation practices are strictly maintained.
+              Implements undergo standardized disinfectant cleansing and careful preparation before
+              each appointment.
             </p>
           </div>
 
@@ -129,8 +130,8 @@ export const AboutView: React.FC<AboutViewProps> = ({
               Gentle, Quality Treatments
             </h3>
             <p className="text-xs text-[#59443F]/80 leading-relaxed">
-              We select high-performance builder gels, non-toxic polishes, and nourishing cuticle
-              elixirs that strengthen natural nail plates over time without aggressive drilling.
+              We select high-performance builder gels, quality salon polishes, and hydrating
+              cuticle elixirs that support natural nail health over time without aggressive drilling.
             </p>
           </div>
 
@@ -160,9 +161,9 @@ export const AboutView: React.FC<AboutViewProps> = ({
             Rooted in Melbourne Style
           </h3>
           <p className="text-sm text-[#59443F]/85 leading-relaxed">
-            From the effortlessly chic coffee culture of South Yarra to the creative indie fashion
-            of Fitzroy and the CBD, Melbourne has a unique design language. We bring that same
-            refined balance to our nail craftsmanship: understated, modern, and distinct.
+            Proposed for the vibrant lifestyle and shopping community of Doncaster, Melbourne,
+            Nail Muse Studio brings a refined balance to modern self-care: understated, elegant,
+            and distinct.
           </p>
         </div>
         <div className="rounded-2xl overflow-hidden aspect-[16/10] bg-[#E8DCD0]">

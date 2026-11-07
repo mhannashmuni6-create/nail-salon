@@ -65,9 +65,9 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
               {/* Subtle unboxed metadata banner adhering to Zero-Pill discipline */}
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#C9959B] font-semibold">
-                <span>Melbourne Boutique Studio</span>
+                <span>Doncaster, Melbourne Studio</span>
                 <span aria-hidden="true">·</span>
-                <span>BIAB & Nail Artistry</span>
+                <span>BIAB &amp; Nail Artistry</span>
               </div>
 
               {/* Main Heading */}
@@ -104,15 +104,15 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
               <div className="pt-6 border-t border-[#E8DCD0]/70 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#59443F]/75">
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-[#C9959B]" />
-                  <span>Medical-grade sterilization</span>
+                  <span>Professional tool sanitization</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Heart className="w-4 h-4 text-[#C9959B]" />
-                  <span>Non-toxic, vegan-friendly gels</span>
+                  <span>Quality builder &amp; gel polishes</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Gem className="w-4 h-4 text-[#C9959B]" />
-                  <span>Melbourne CBD & Inner East</span>
+                  <span>Doncaster, Melbourne</span>
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                 <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] lg:aspect-[4/5] bg-[#E8DCD0]">
                   <img
                     src={Images.heroManicure}
-                    alt="Close-up of glazed chrome almond manicured nails with delicate gold jewelry at Nail Muse Studio Melbourne"
+                    alt="Photorealistic close-up of a female hand with five almond nails featuring glossy nude-pink BIAB gel polish at Nail Muse Studio Melbourne"
                     className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
@@ -137,7 +137,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
                         Signature Finish
                       </p>
                       <p className="text-sm font-medium text-[#59443F]">
-                        Pearl Glazed Chrome on BIAB Almonds
+                        Glossy Nude-Pink BIAB Almonds
                       </p>
                     </div>
                     <button
@@ -163,12 +163,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
               <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[16/10] bg-[#E8DCD0]">
                 <img
                   src={Images.salonInterior}
-                  alt="Aesthetic interior of Nail Muse Studio Melbourne featuring blush walls, arched mirrors, and bouclé seating"
+                  alt="Aesthetic interior of Nail Muse Studio Doncaster Melbourne featuring blush walls, arched mirrors, and bouclé seating"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-4 left-4 bg-[#59443F]/85 text-white text-[11px] uppercase tracking-widest px-3 py-1 rounded-full font-medium backdrop-blur-sm">
-                  Melbourne Studio
+                  Doncaster, Melbourne
                 </div>
               </div>
             </div>
@@ -450,8 +450,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="aspect-square rounded-xl overflow-hidden bg-white border border-[#E8DCD0] relative group">
               <img
-                src={Images.heroManicure}
-                alt="Instagram set glazed chrome"
+                src={Images.galPinkChrome}
+                alt="Instagram set soft pink chrome"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
@@ -460,8 +460,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             </div>
             <div className="aspect-square rounded-xl overflow-hidden bg-white border border-[#E8DCD0] relative group">
               <img
-                src={Images.biabNude}
-                alt="Instagram set nude BIAB"
+                src={Images.galNudeBiab}
+                alt="Instagram set classic nude BIAB"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
@@ -470,8 +470,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             </div>
             <div className="aspect-square rounded-xl overflow-hidden bg-white border border-[#E8DCD0] relative group">
               <img
-                src={Images.frenchChrome}
-                alt="Instagram set French tips"
+                src={Images.galFrenchTips}
+                alt="Instagram set elegant French tips"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
@@ -480,8 +480,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onNavigate }) => {
             </div>
             <div className="aspect-square rounded-xl overflow-hidden bg-white border border-[#E8DCD0] relative group">
               <img
-                src={Images.artCreative}
-                alt="Instagram set creative nail art"
+                src={Images.galChocolateBrown}
+                alt="Instagram set rich chocolate brown gel"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
