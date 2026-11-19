@@ -10,20 +10,29 @@ import { HomeView } from './views/HomeView';
 import { ServicesView } from './views/ServicesView';
 import { BookingView } from './views/BookingView';
 import { GalleryView } from './views/GalleryView';
+import { BlogView } from './views/BlogView';
 import { AboutView } from './views/AboutView';
 import { ContactView } from './views/ContactView';
+import { BLOG_POSTS } from './data/blogData';
 import { trackEvent } from './utils/analytics';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>('home');
+  const [blogSlug, setBlogSlug] = useState<string | undefined>(undefined);
   const [preSelectedServiceId, setPreSelectedServiceId] = useState<string | undefined>(undefined);
 
   // Sync with browser URL hash for direct links and GitHub Pages subfolder support
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#/', '').replace('#', '').toLowerCase();
-      if (['home', 'services', 'book', 'gallery', 'about', 'contact'].includes(hash)) {
-        setCurrentTab(hash);
+      const rawHash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+      if (rawHash === 'blog' || rawHash.startsWith('blog/')) {
+        setCurrentTab('blog');
+        const slugPart = rawHash.startsWith('blog/') ? rawHash.slice(5) : undefined;
+        setBlogSlug(slugPart || undefined);
+        return;
+      }
+      if (['home', 'services', 'book', 'gallery', 'about', 'contact'].includes(rawHash)) {
+        setCurrentTab(rawHash);
       }
     };
 
@@ -32,23 +41,56 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Update document title and track page view on tab change
+  // Update document title, meta description, social tags, and track page view on tab change
   useEffect(() => {
+    const defaultDescription =
+      'Boutique nail and beauty salon in Melbourne, Victoria, Australia specialising in BIAB builder gel, luxury manicures, and bespoke nail art. Your Nails, Your Muse.';
+    const activeBlogPost =
+      BLOG_POSTS.find((p) => p.slug === blogSlug) || BLOG_POSTS[0];
+
     const titles: { [key: string]: string } = {
       home: 'Nail Muse Studio – Boutique Nail & Beauty Salon Melbourne',
       services: 'Services & Pricing Menu – Nail Muse Studio Melbourne',
       book: 'Book an Appointment – Nail Muse Studio Melbourne',
       gallery: 'Nail Inspiration Gallery – Nail Muse Studio Melbourne',
+      blog: activeBlogPost.seoTitle,
       about: 'About Us – The Beauty Behind Nail Muse Studio Melbourne',
       contact: 'Contact & Location – Nail Muse Studio Melbourne',
     };
 
-    if (titles[currentTab]) {
-      document.title = titles[currentTab];
-    }
+    const descriptions: { [key: string]: string } = {
+      home: defaultDescription,
+      services: defaultDescription,
+      book: defaultDescription,
+      gallery: defaultDescription,
+      blog: activeBlogPost.metaDescription,
+      about: defaultDescription,
+      contact: defaultDescription,
+    };
 
-    trackEvent('page_view', { page: currentTab });
-  }, [currentTab]);
+    const pageTitle = titles[currentTab] || titles.home;
+    const pageDescription = descriptions[currentTab] || defaultDescription;
+
+    document.title = pageTitle;
+
+    const updateMeta = (selector: string, content: string) => {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.setAttribute('content', content);
+      }
+    };
+
+    updateMeta('meta[name="description"]', pageDescription);
+    updateMeta('meta[property="og:title"]', pageTitle);
+    updateMeta('meta[property="og:description"]', pageDescription);
+    updateMeta('meta[name="twitter:title"]', pageTitle);
+    updateMeta('meta[name="twitter:description"]', pageDescription);
+
+    trackEvent('page_view', {
+      page: currentTab,
+      ...(currentTab === 'blog' ? { postSlug: activeBlogPost.slug } : {}),
+    });
+  }, [currentTab, blogSlug]);
 
   const handleNavigate = (tab: string, serviceId?: string) => {
     if (serviceId) {
@@ -99,6 +141,10 @@ export default function App() {
               handleNavigate('book', suggestedServiceId);
             }}
           />
+        )}
+
+        {currentTab === 'blog' && (
+          <BlogView initialSlug={blogSlug} onNavigate={handleNavigate} />
         )}
 
         {currentTab === 'about' && (

@@ -63,7 +63,7 @@ export const ContactView: React.FC = () => {
         {/* Left Col: Contact Info & Opening Hours */}
         <div className="lg:col-span-5 space-y-8">
           <div className="bg-white rounded-3xl p-8 border border-[#E8DCD0] space-y-6 shadow-sm">
-            <h3 className="font-serif text-2xl text-[#59443F] font-medium">Studio Details</h3>
+            <h2 className="font-serif text-2xl text-[#59443F] font-medium">Studio Details</h2>
 
             <div className="space-y-4 text-sm text-[#59443F]/85">
               <div className="flex items-start gap-3">
@@ -138,10 +138,10 @@ export const ContactView: React.FC = () => {
 
           {/* Opening Hours Card */}
           <div className="bg-[#FAF7F2] rounded-3xl p-8 border border-[#E8DCD0] space-y-4">
-            <h3 className="font-serif text-xl text-[#59443F] font-medium flex items-center gap-2">
+            <h2 className="font-serif text-xl text-[#59443F] font-medium flex items-center gap-2">
               <Clock className="w-4 h-4 text-[#C9959B]" />
               Opening Hours
-            </h3>
+            </h2>
             <div className="space-y-2 text-xs sm:text-sm text-[#59443F]/80">
               {SALON_INFO.hours.map((item, idx) => (
                 <div key={idx} className="flex justify-between py-1 border-b border-[#E8DCD0]/60">
@@ -160,9 +160,9 @@ export const ContactView: React.FC = () => {
               <span className="text-[10px] uppercase tracking-widest text-[#C9959B] font-bold">
                 Online Message
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-[#59443F] font-medium">
+              <h2 className="font-serif text-2xl sm:text-3xl text-[#59443F] font-medium">
                 Send Us a Note
-              </h3>
+              </h2>
             </div>
 
             {/* University Project Demonstration Notice */}
@@ -178,7 +178,7 @@ export const ContactView: React.FC = () => {
                 <div className="w-12 h-12 rounded-full bg-[#F5E6E8] flex items-center justify-center mx-auto text-[#C9959B]">
                   <CheckCircle className="w-6 h-6" />
                 </div>
-                <h4 className="font-serif text-2xl text-[#59443F]">Demo Form Completed Successfully</h4>
+                <h3 className="font-serif text-2xl text-[#59443F]">Demo Form Completed Successfully</h3>
                 <p className="text-sm text-[#59443F]/85 max-w-md mx-auto leading-relaxed">
                   Thank you, <span className="font-semibold">{fullName}</span>. Please note that this is an <strong>interactive demonstration only</strong> for a university assessment. <strong>No message has been sent</strong>, no data has been stored, and <strong>no response email will be received</strong>.
                 </p>
@@ -291,9 +291,9 @@ export const ContactView: React.FC = () => {
             <span className="text-[10px] uppercase tracking-widest text-[#C9959B] font-bold">
               Doncaster Location Map
             </span>
-            <h3 className="font-serif text-2xl text-[#59443F] font-medium">
+            <h2 className="font-serif text-2xl text-[#59443F] font-medium">
               Finding Nail Muse Studio
-            </h3>
+            </h2>
             <p className="text-xs sm:text-sm text-[#59443F]/75">
               Conveniently located in Doncaster with nearby bus transit connections and parking precincts.
             </p>
@@ -324,9 +324,9 @@ export const ContactView: React.FC = () => {
               <MapPin className="w-5 h-5 fill-current" />
             </div>
             <div>
-              <h4 className="font-serif text-lg font-medium text-[#59443F]">
+              <h3 className="font-serif text-lg font-medium text-[#59443F]">
                 Nail Muse Studio Doncaster
-              </h4>
+              </h3>
               <p className="text-xs text-[#59443F]/80 mt-1">
                 Doncaster, Melbourne, Victoria, Australia
               </p>

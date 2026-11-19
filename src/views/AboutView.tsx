@@ -157,9 +157,9 @@ export const AboutView: React.FC<AboutViewProps> = ({
           <span className="text-xs uppercase tracking-[0.25em] text-[#C9959B] font-bold">
             Local Aesthetics
           </span>
-          <h3 className="font-serif text-2xl sm:text-3xl text-[#59443F]">
+          <h2 className="font-serif text-2xl sm:text-3xl text-[#59443F]">
             Rooted in Melbourne Style
-          </h3>
+          </h2>
           <p className="text-sm text-[#59443F]/85 leading-relaxed">
             Proposed for the vibrant lifestyle and shopping community of Doncaster, Melbourne,
             Nail Muse Studio brings a refined balance to modern self-care: understated, elegant,

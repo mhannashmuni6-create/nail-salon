@@ -14,6 +14,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services & Pricing' },
     { id: 'gallery', label: 'Gallery' },
+    { id: 'blog', label: 'Blog' },
     { id: 'about', label: 'About' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -33,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
 
   return (
     <header className="sticky top-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DCD0] transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
         {/* Zone 1: Brand Wordmark */}
         <button
           onClick={() => handleLinkClick('home')}
@@ -49,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
         </button>
 
         {/* Zone 2: Navigation Links (Clean single-line with subtle hover underline) */}
-        <nav className="hidden md:flex items-center gap-7 lg:gap-9 text-sm font-medium text-[#59443F]/80">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-[#59443F]/80">
           {navLinks.map((link) => {
             const isActive = currentTab === link.id;
             return (
@@ -83,10 +84,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
             Book Now
           </button>
 
-          {/* Mobile hamburger toggle */}
+          {/* Mobile / Tablet hamburger toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-[#59443F] hover:text-[#C9959B] focus:outline-none rounded-lg"
+            className="lg:hidden p-2 text-[#59443F] hover:text-[#C9959B] focus:outline-none rounded-lg"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -94,9 +95,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, onNavigate }) => {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile / Tablet Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAF7F2] border-b border-[#E8DCD0] px-4 pt-3 pb-6 space-y-3 shadow-lg animate-in fade-in duration-200">
+        <div className="lg:hidden bg-[#FAF7F2] border-b border-[#E8DCD0] px-4 pt-3 pb-6 space-y-3 shadow-lg animate-in fade-in duration-200">
           <div className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <button

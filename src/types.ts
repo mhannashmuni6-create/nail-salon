@@ -72,3 +72,57 @@ export interface ConfirmedBooking extends BookingFormData {
   referenceNumber: string;
   createdAt: string;
 }
+
+export interface BlogComparisonRow {
+  feature: string;
+  biab: string;
+  gelPolish: string;
+}
+
+export type BlogTextSegment =
+  | { type: 'text'; value: string }
+  | { type: 'strong'; value: string }
+  | {
+      type: 'link';
+      label: string;
+      targetTab: 'services' | 'book' | 'gallery' | 'contact' | 'about';
+      serviceId?: string;
+    };
+
+export interface BlogSection {
+  id: string;
+  heading: string;
+  paragraphs?: BlogTextSegment[][];
+  bullets?: { label?: string; content: BlogTextSegment[] }[];
+  comparisonTable?: {
+    caption: string;
+    rows: BlogComparisonRow[];
+  };
+  image?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  };
+  closingParagraphs?: BlogTextSegment[][];
+}
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  seoTitle: string;
+  metaDescription: string;
+  category: string;
+  publishedDate: string;
+  publishedDateDisplay: string;
+  readTime: string;
+  author: string;
+  primaryKeyword: string;
+  supportingKeywords: string[];
+  featuredImage: string;
+  featuredImageAlt: string;
+  featuredImageCaption?: string;
+  excerpt: string;
+  sections: BlogSection[];
+}
+
