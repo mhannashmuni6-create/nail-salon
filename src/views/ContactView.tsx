@@ -165,13 +165,11 @@ export const ContactView: React.FC = () => {
               </h2>
             </div>
 
-            {/* University Project Demonstration Notice */}
-            <div className="p-3.5 bg-[#F5E6E8]/80 rounded-xl border border-[#E8DCD0] text-xs text-[#59443F]/90 flex items-start gap-2.5">
-              <Info className="w-4 h-4 text-[#C9959B] shrink-0 mt-0.5" />
-              <span>
-                <strong>University Project Demonstration:</strong> This contact form is an interactive design demonstration for educational purposes. Nail Muse Studio is a conceptual salon; submissions are not sent or stored, and no email response will be received.
-              </span>
-            </div>
+            {/* Subtle demo notice */}
+            <p className="text-xs text-[#59443F]/75 flex items-center gap-2">
+              <Info className="w-3.5 h-3.5 text-[#C9959B] shrink-0" />
+              <span>Demo contact form &mdash; messages are not sent or stored.</span>
+            </p>
 
             {isSubmitted ? (
               <div className="bg-[#FAF7F2] rounded-2xl p-8 text-center space-y-4 border border-[#E8DCD0] animate-in fade-in">

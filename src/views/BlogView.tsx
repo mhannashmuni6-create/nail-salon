@@ -5,7 +5,6 @@ import {
   Sparkles,
   ArrowRight,
   BookOpen,
-  Info,
   ChevronRight,
 } from 'lucide-react';
 import { BLOG_POSTS } from '../data/blogData';
@@ -384,9 +383,9 @@ export const BlogView: React.FC<BlogViewProps> = ({ initialSlug, onNavigate }) =
                   </p>
                 ))}
 
-                {/* Action buttons & University Demo Clarification in Final CTA Section */}
+                {/* Action buttons in Final CTA Section */}
                 {isFinalCtaSection && (
-                  <div className="pt-4 space-y-5">
+                  <div className="pt-4">
                     <div className="flex flex-wrap gap-3">
                       <a
                         href="#/book"
@@ -414,26 +413,6 @@ export const BlogView: React.FC<BlogViewProps> = ({ initialSlug, onNavigate }) =
                         Explore Services &amp; Pricing
                         <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                       </a>
-                    </div>
-
-                    <div
-                      role="note"
-                      aria-label="University Project Demonstration Notice"
-                      className="flex items-start gap-2.5 p-4 rounded-xl bg-[#F5E6E8]/70 border border-[#E8DCD0] text-xs text-[#59443F]/90 leading-relaxed"
-                    >
-                      <Info
-                        className="w-4 h-4 text-[#C9959B] shrink-0 mt-0.5"
-                        aria-hidden="true"
-                      />
-                      <div>
-                        <strong className="font-semibold text-[#59443F]">
-                          University Project Demonstration:
-                        </strong>{' '}
-                        Nail Muse Studio is a conceptual salon website developed for a university
-                        digital marketing project in Doncaster, Melbourne. The booking workflow on
-                        this site is an interactive demonstration only, not a live appointment
-                        system—no real bookings are created and no confirmation emails are sent.
-                      </div>
                     </div>
                   </div>
                 )}

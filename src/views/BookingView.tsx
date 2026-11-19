@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Calendar as CalendarIcon,
   Clock,
-  Sparkles,
   CheckCircle,
   AlertCircle,
   ChevronRight,
@@ -236,14 +235,6 @@ END:VCALENDAR`;
           Select your bespoke treatment, pick a convenient time, and tell us your nail style
           preferences.
         </p>
-
-        {/* University Project Demonstration Notice */}
-        <div className="p-3.5 bg-[#F5E6E8]/85 rounded-xl border border-[#E8DCD0] text-xs text-[#59443F]/90 max-w-xl mx-auto flex items-start sm:items-center justify-center gap-2.5 shadow-xs">
-          <Sparkles className="w-4 h-4 text-[#C9959B] shrink-0 mt-0.5 sm:mt-0" />
-          <span>
-            <strong>University Project Demonstration:</strong> This booking system is an interactive prototype created for academic assessment. Nail Muse Studio is a conceptual salon; no real appointments are booked, and no payment is processed.
-          </span>
-        </div>
       </div>
 
       {/* Step Indicator (Steps 1 to 5) */}
@@ -808,10 +799,12 @@ END:VCALENDAR`;
               </div>
             </div>
 
-            {/* Disclaimer reminder */}
-            <div className="p-4 bg-[#FAF7F2] rounded-xl text-xs text-[#59443F]/80 leading-relaxed border border-[#E8DCD0]">
-              <strong>University Project Demonstration:</strong> Submitting this request demonstrates the prototype appointment staging flow. No real booking is created, no email is sent, and no payment is processed.
-            </div>
+          </div>
+
+          {/* Short notice immediately before final submission */}
+          <div className="flex items-center justify-end gap-2 text-xs text-[#59443F]/85 bg-[#F5E6E8]/70 px-4 py-2.5 rounded-xl border border-[#E8DCD0]">
+            <AlertCircle className="w-3.5 h-3.5 text-[#C9959B] shrink-0" />
+            <span>Demo booking only &mdash; no real appointment will be created.</span>
           </div>
 
           {/* Controls */}
@@ -848,7 +841,8 @@ END:VCALENDAR`;
               Demo Booking Staged!
             </h2>
             <p className="text-sm text-[#59443F]/85 max-w-md mx-auto leading-relaxed">
-              Thank you, <span className="font-semibold">{confirmedBooking.fullName}</span>. Please note that this is a <strong>demonstration only</strong> for a university assessment. <strong>No real appointment has been created</strong>, and <strong>no confirmation email will be sent</strong>.
+              Thank you, <span className="font-semibold">{confirmedBooking.fullName}</span>. Your
+              selected treatment and appointment preferences are summarised below.
             </p>
           </div>
 
@@ -876,12 +870,9 @@ END:VCALENDAR`;
             </div>
           </div>
 
-          {/* Note regarding demonstration status */}
-          <div className="text-xs text-[#59443F]/80 bg-[#F5E6E8]/60 p-4 rounded-xl border border-[#E8DCD0] text-left space-y-1.5">
-            <p className="font-semibold text-[#59443F]">University Project Demonstration Notice:</p>
-            <p>
-              This booking summary demonstrates client-side workflow interaction only. No actual booking has been made at any physical salon, no customer records or personal information are stored or transmitted, and no email notifications will be sent.
-            </p>
+          {/* Single clear demonstration disclaimer */}
+          <div className="text-xs sm:text-sm text-[#59443F]/90 bg-[#F5E6E8]/60 p-4 rounded-xl border border-[#E8DCD0] text-center leading-relaxed">
+            This is a university project demonstration. No real appointment has been created, and no confirmation email will be sent.
           </div>
 
           {/* Actions */}
