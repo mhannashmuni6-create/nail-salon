@@ -1,6 +1,6 @@
 /**
  * Digital Marketing & Analytics Helper for Nail Muse Studio.
- * Prepares the application for GA4, Google Tag Manager, and custom event tracking.
+ * Dispatches GA4 events directly via gtag.js (G-9VMM3MVD2Z) without duplicate dataLayer pushes.
  * Strictly adheres to privacy guidelines: never transmits personal information (PII).
  */
 
@@ -16,32 +16,51 @@ interface AnalyticsPayload {
   [key: string]: string | number | boolean | undefined;
 }
 
+type GtagFunction = (
+  command: 'event' | 'config' | 'js',
+  targetOrName: string | Date,
+  params?: Record<string, string | number | boolean>
+) => void;
+
 export const trackEvent = (eventName: AnalyticsEventName, payload?: AnalyticsPayload) => {
-  // In browser runtime, dispatch custom event and log to developer console
-  if (typeof window !== 'undefined') {
-    const sanitizedPayload = {
-      event: eventName,
-      timestamp: new Date().toISOString(),
-      url: window.location.href,
-      ...payload,
-    };
+  if (typeof window === 'undefined') return;
 
-    // Forward to window.dataLayer if GA4 / GTM is present
-    const win = window as unknown as { dataLayer?: unknown[] };
-    if (Array.isArray(win.dataLayer)) {
-      win.dataLayer.push(sanitizedPayload);
-    }
+  // Strip undefined properties so GA4 receives clean event parameters
+  const cleanParams: Record<string, string | number | boolean> = {};
+  if (payload) {
+    Object.entries(payload).forEach(([key, value]) => {
+      if (value !== undefined) {
+        cleanParams[key] = value;
+      }
+    });
+  }
 
-    // Custom browser event for extensible integrations
-    window.dispatchEvent(
-      new CustomEvent('nailmuse:analytics', {
-        detail: sanitizedPayload,
-      })
-    );
+  const win = window as unknown as {
+    gtag?: GtagFunction;
+    dataLayer?: unknown[];
+  };
 
-    // Development diagnostic log
-    if (import.meta.env.DEV) {
-      console.log(`[Analytics Event] ${eventName}`, sanitizedPayload);
-    }
+  // Forward directly to GA4 via gtag() (which manages dataLayer internally to prevent duplicates)
+  if (typeof win.gtag === 'function') {
+    win.gtag('event', eventName, cleanParams);
+  }
+
+  const diagnosticDetail = {
+    event: eventName,
+    timestamp: new Date().toISOString(),
+    url: window.location.href,
+    ...cleanParams,
+  };
+
+  // Custom browser event for extensible local diagnostics
+  window.dispatchEvent(
+    new CustomEvent('nailmuse:analytics', {
+      detail: diagnosticDetail,
+    })
+  );
+
+  // Development diagnostic log
+  if (import.meta.env.DEV) {
+    console.log(`[Analytics Event] ${eventName}`, diagnosticDetail);
   }
 };

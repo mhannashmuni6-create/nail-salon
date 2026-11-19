@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomeView } from './views/HomeView';
@@ -16,32 +16,40 @@ import { ContactView } from './views/ContactView';
 import { BLOG_POSTS } from './data/blogData';
 import { trackEvent } from './utils/analytics';
 
+const parseRouteFromHash = (hashValue: string): { tab: string; blogSlug?: string } => {
+  const rawHash = hashValue.replace(/^#\/?/, '').toLowerCase();
+  if (rawHash === 'blog' || rawHash.startsWith('blog/')) {
+    const slugPart = rawHash.startsWith('blog/') ? rawHash.slice(5) : undefined;
+    return { tab: 'blog', blogSlug: slugPart || undefined };
+  }
+  if (['home', 'services', 'book', 'gallery', 'about', 'contact'].includes(rawHash)) {
+    return { tab: rawHash };
+  }
+  return { tab: 'home' };
+};
+
 export default function App() {
-  const [currentTab, setCurrentTab] = useState<string>('home');
-  const [blogSlug, setBlogSlug] = useState<string | undefined>(undefined);
+  const initialRoute =
+    typeof window !== 'undefined' ? parseRouteFromHash(window.location.hash) : { tab: 'home' };
+
+  const [currentTab, setCurrentTab] = useState<string>(initialRoute.tab);
+  const [blogSlug, setBlogSlug] = useState<string | undefined>(initialRoute.blogSlug);
   const [preSelectedServiceId, setPreSelectedServiceId] = useState<string | undefined>(undefined);
+  const lastTrackedRouteRef = useRef<string | null>(null);
 
   // Sync with browser URL hash for direct links and GitHub Pages subfolder support
   useEffect(() => {
     const handleHashChange = () => {
-      const rawHash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
-      if (rawHash === 'blog' || rawHash.startsWith('blog/')) {
-        setCurrentTab('blog');
-        const slugPart = rawHash.startsWith('blog/') ? rawHash.slice(5) : undefined;
-        setBlogSlug(slugPart || undefined);
-        return;
-      }
-      if (['home', 'services', 'book', 'gallery', 'about', 'contact'].includes(rawHash)) {
-        setCurrentTab(rawHash);
-      }
+      const parsed = parseRouteFromHash(window.location.hash);
+      setCurrentTab(parsed.tab);
+      setBlogSlug(parsed.blogSlug);
     };
 
-    handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Update document title, meta description, social tags, and track page view on tab change
+  // Update document title, meta description, social tags, and dispatch single manual GA4 page_view
   useEffect(() => {
     const defaultDescription =
       'Boutique nail and beauty salon in Melbourne, Victoria, Australia specialising in BIAB builder gel, luxury manicures, and bespoke nail art. Your Nails, Your Muse.';
@@ -86,15 +94,33 @@ export default function App() {
     updateMeta('meta[name="twitter:title"]', pageTitle);
     updateMeta('meta[name="twitter:description"]', pageDescription);
 
-    trackEvent('page_view', {
-      page: currentTab,
-      ...(currentTab === 'blog' ? { postSlug: activeBlogPost.slug } : {}),
-    });
+    const virtualPath =
+      currentTab === 'blog' ? `/blog/${activeBlogPost.slug}` : `/${currentTab}`;
+
+    if (lastTrackedRouteRef.current !== virtualPath) {
+      lastTrackedRouteRef.current = virtualPath;
+
+      const basePath = window.location.pathname.endsWith('/')
+        ? window.location.pathname.slice(0, -1)
+        : window.location.pathname;
+      const virtualLocation = `${window.location.origin}${basePath}${virtualPath}`;
+
+      trackEvent('page_view', {
+        page_title: pageTitle,
+        page_location: virtualLocation,
+        page_path: virtualPath,
+        page: currentTab,
+        ...(currentTab === 'blog' ? { post_slug: activeBlogPost.slug } : {}),
+      });
+    }
   }, [currentTab, blogSlug]);
 
   const handleNavigate = (tab: string, serviceId?: string) => {
     if (serviceId) {
       setPreSelectedServiceId(serviceId);
+    }
+    if (tab !== 'blog') {
+      setBlogSlug(undefined);
     }
     setCurrentTab(tab);
     window.location.hash = `#/${tab}`;
