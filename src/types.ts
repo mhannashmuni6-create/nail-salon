@@ -51,6 +51,13 @@ export interface FAQItem {
 export type NailShape = 'Almond' | 'Square' | 'Squoval' | 'Oval' | 'Coffin';
 export type NailLength = 'Natural / Short' | 'Medium' | 'Long' | 'Extra Long';
 
+export interface SelectedAddOnItem {
+  id: string;
+  name: string;
+  price: number;
+  durationMinutes: number;
+}
+
 export interface BookingFormData {
   serviceId: string;
   serviceName: string;
@@ -61,6 +68,7 @@ export interface BookingFormData {
   nailShape: NailShape;
   nailLength: NailLength;
   addOns: string[];
+  addOnItems: SelectedAddOnItem[];
   designNotes: string;
   fullName: string;
   phone: string;

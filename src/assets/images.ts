@@ -7,7 +7,7 @@ import galNudeBiab from './images/gal_nude_biab_1793957639509.jpg';
 import galFrenchTips from './images/gal_french_tips_1793957639546.jpg';
 import galChocolateBrown from './images/gal_chocolate_brown_1793957639801.jpg';
 import galPinkChrome from './images/gal_pink_chrome_1793957640615.jpg';
-import galMinimalistFloral from './images/gal_minimalist_floral_1793957640758.jpg';
+const galMinimalistFloral = `${import.meta.env.BASE_URL}assets/aistudio/Glossy_Daisy_Nail_Art_on_Beige_Knit_6f3fec9d.png`;
 import galMilkyWhite from './images/gal_milky_white_1793957642244.jpg';
 import galBurgundyAlmond from './images/gal_burgundy_almond_1793957642997.jpg';
 import galSubtleGlitter from './images/gal_subtle_glitter_1793957642907.jpg';

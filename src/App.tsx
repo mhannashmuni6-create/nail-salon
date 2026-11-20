@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomeView } from './views/HomeView';
@@ -48,6 +48,13 @@ export default function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  // Reset scroll to top on every route change (including hash navigation and browser Back/Forward)
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [currentTab, blogSlug]);
 
   // Update document title, meta description, social tags, and dispatch single manual GA4 page_view
   useEffect(() => {
@@ -122,9 +129,12 @@ export default function App() {
     if (tab !== 'blog') {
       setBlogSlug(undefined);
     }
+    if (tab === currentTab) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      return;
+    }
     setCurrentTab(tab);
     window.location.hash = `#/${tab}`;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectServiceAndBook = (serviceId: string) => {
